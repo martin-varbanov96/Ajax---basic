@@ -6,42 +6,34 @@ $(document).ready(function(){
         url: "xml/test.xml",
         dataType: "xml",
         success: function (xml) {
-            var input;
-            setInterval(function(){
-                input = $("#input").val();
-                var tempInput;
-                var tempMatch;
-                var tempOutput;
-                var tempRand;
-                var xmlCont = $.parseXML(xml);
-                $("#output").empty();
-                $(xml).find("row").children().each(function(){                    
-                    tempRand =getRandomInRange(1,999);
-                    $("#output").append("<div id=" + tempRand + " class='element'></div>");
-                    tempInput = $(this).text();
-                    if(input == tempInput){
-                        
-                        $(this).parent().children().each(function(){
-                            tempOutput = $(this).text();
-                         //   $("#output").append("<div id='match'></div>");
-                            $("#"+ tempRand).append(tempOutput);  
-                        });
-                    }
+            var currentInput;
+            var rowId;
+            var currentOutput;
+            var xmlCont = $.parseXML(xml);
+            $(xml).find("row").each(function(){
+                rowId = $(this).find(':first-child').html();
+                $("#output").append('<div id='+ rowId + ' class="element"></div>');
+//                $(xml).find("row").children().each(function(){
+//                    console.log($(this).html());
+//                    $("#" + rowId).append($(this).html());
+//                });
+                $(this).children().each(function(){                    
+                    $("#" + rowId).append("<div><span>"+ $(this).prop("tagName") + ": "+ "</span><span>" + $(this).html() + "</span></div>");
                 });
-            }, 2000);    
-            function getRandomInRange(min, max){ 
-                return Math.floor(Math.random()*(max-min)+min);
-            }
-//            $(xml).find('row').each(function(){
-////                $(this).find("prid").each(function(){
-////                    $('#content').append("<tr>");
-////                    $("#content").append("<td>" + $(this).text() +"</td>");
-////                });
-////                $(this).find("product").each(function(){
-////                    $("#content").append("<td>" + $(this).text() +"</td>");
-////                });
-//               
-//            });            
-        }    
+            });
+            setInterval(function(){
+                $(".element").css("display", "none");
+                currentInput = $("#input").val();
+                $(xml).find("row").each(function(){
+                    rowId = $(this).find(':first-child').html();
+                    $(this).children().each(function(){
+                        currentOutput = $(this).html();
+                        if(currentOutput == currentInput){
+                            $("#" + rowId).css("display", "block");
+                        }
+                    });
+                });
+            }, 2000);
+        }
     });
 });

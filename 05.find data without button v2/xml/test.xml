@@ -1,5 +1,6 @@
 <root>
 	<row>
+        <id>0</id>
 		<prid>1</prid>
 		<product>Name 1</product>
 		<category>Cat 1</category>
@@ -8,6 +9,7 @@
 		<sum>44</sum>
 	</row>
 	<row>
+        <id>1</id>        
 		<prid>2</prid>
 		<product>Name 2</product>
 		<category>Cat 1</category>
@@ -16,6 +18,7 @@
 		<sum>22</sum>
 	</row>
 	<row>
+        <id>2</id>        
 		<prid>3</prid>
 		<product>Name 3</product>
 		<category>Cat 2</category>
@@ -24,6 +27,7 @@
 		<sum>12</sum>
 	</row>
 	<row>
+        <id>3</id>        
 		<prid>4</prid>
 		<product>Name 4</product>
 		<category>Cat 1</category>
@@ -32,6 +36,7 @@
 		<sum>220</sum>
 	</row>
 	<row>
+        <id>4</id>        
 		<prid>3</prid>
 		<product>Name 3</product>
 		<category>Cat 2</category>
