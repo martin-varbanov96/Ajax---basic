@@ -1,8 +1,10 @@
 $(document).ready(function(){
     var start = Date.now();    
     var now;    
-    $.cookie("start", Date.now());;
     var startCookie = $.cookie("start");
+    if($.cookie("start") == undefined){
+        $.cookie("start", Date.now());
+    }
     setInterval(function(){
         now = Math.floor((Date.now() - startCookie)/1000);
         if(now < 60){
@@ -13,4 +15,8 @@ $(document).ready(function(){
             $("#output").html(Math.floor(now/1440) + " hours");
         }
     }, 3000);
+    $("#reset").click(function(){
+        $.cookie("start", Date.now());
+        startCookie = $.cookie("start");
+    });
 });
